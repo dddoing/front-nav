@@ -1,10 +1,19 @@
 import React from "react";
+import {Box,BottomNavigation,BottomNavigationAction} from "@material-ui/core";
 
 class View extends React.Component {
     //
     render() {
         return (
-            <div>Nav Container</div>
+            <>
+                <Box sx={{width: "auto"}}>
+                    <BottomNavigation showLabels>
+                        <BottomNavigationAction  label="main"/>
+                        <BottomNavigationAction  label="Restaurant"/>
+                        <BottomNavigationAction  label="Cafe"/>
+                    </BottomNavigation>
+                </Box>
+            </>
         )
     }
 }

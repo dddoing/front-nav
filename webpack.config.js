@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { ModuleFederationPlugin } = require("webpack").container;
+const {ModuleFederationPlugin} = require("webpack").container;
 const path = require("path");
 const deps = require("./package.json").dependencies;
 
@@ -31,16 +31,17 @@ module.exports = {
     plugins: [
         new ModuleFederationPlugin({
             name: "Navigation", //domain name
-            library: { type: "var", name: "Navigation" },
+            library: {type: "var", name: "Navigation"},
             filename: "remoteEntry.js", //bundle
             exposes: { //외부연결
-                './Navigation' : "./src/Component/Navigation/Container"
+                './Navigation': "./src/Component/Navigation/Container"
             },
             shared: {
                 ...deps,
-                "react": { singleton: true ,strictVersion:true,eager:true},
-                "react-dom": { singleton: true ,strictVersion:true,eager:true},
-                "react-router-dom": { singleton: true ,strictVersion:true,eager:true }
+                "@material-ui/core":{singleton: true, strictVersion: true, eager: true},
+                "react": {singleton: true, strictVersion: true, eager: true},
+                "react-dom": {singleton: true, strictVersion: true, eager: true},
+                "react-router-dom": {singleton: true, strictVersion: true, eager: true}
             },
         }),
         new HtmlWebpackPlugin({
